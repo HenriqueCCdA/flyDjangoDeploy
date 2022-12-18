@@ -1,0 +1,14 @@
+fly.toml
+.git/
+*.sqlite3
+.venv
+*.env
+db
+docker-compose.yml
+pytest.ini
+*.in
+requirements-dev.txt
+#static
+*.vscode
+*.pytest_cache
+Dockerfile

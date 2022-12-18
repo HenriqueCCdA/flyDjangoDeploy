@@ -1,0 +1,15 @@
+services:
+
+  database:
+    container_name: fly_django_db
+    image: postgres:14.5-alpine
+    restart: 'no'
+    volumes:
+      - ./db/pgdata:/var/lib/postgresql/data
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_PASSWORD=fly_django
+      - POSTGRES_USER=fly_django
+      - POSTGRES_DB=fly_django
+    ports:
+      - 5434:5432
