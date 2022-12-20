@@ -1,30 +1,24 @@
-#ARG PYTHON_VERSION=3.11-slim-buster
-ARG PYTHON_VERSION=3.11-alpine3.17
+ARG PYTHON_VERSION=3.11-slim-buster
+#ARG PYTHON_VERSION=3.11-alpine3.17
 
 FROM python:${PYTHON_VERSION}
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# WORKDIR /app
+WORKDIR /app
 
-
-
-# RUN apt-get update && apt-get install -y\
-#     libpq-dev\
-#     gcc\
-#     && rm -rf /var/lib/apt/lists/*
-
-RUN set -eux; \
-    apk update --no-cache\
-    && apk add --no-cache \
+RUN apt-get update && apt-get install -y\
     libpq-dev\
     gcc\
-    libc-dev
+    && rm -rf /var/lib/apt/lists/*
 
-# RUN adduser -D myuser
-# USER myuser
-# WORKDIR /home/myuser/app
+# RUN set -eux; \
+#     apk update --no-cache\
+#     && apk add --no-cache \
+#     libpq-dev\
+#     gcc\
+#     libc-dev
 
 COPY requirements.txt .
 
